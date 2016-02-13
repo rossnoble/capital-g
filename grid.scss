@@ -1,0 +1,102 @@
+// UTILS
+
+@mixin clearfix {
+  zoom: 1;
+
+  &:before, &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// CONFIG
+
+$g-maxWidth: 1120px;
+$g-columnGutter: 15px;
+
+// GRID
+
+.G-container {
+  max-width: $g-maxWidth;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $g-columnGutter;
+  padding-right: $g-columnGutter;
+}
+
+.G-row {
+  @include clearfix;
+  padding: 0;
+  margin-left: -$g-columnGutter;
+  margin-right: -$g-columnGutter;
+}
+
+.G-col {
+  float: left;
+  padding-left: $g-columnGutter;
+  padding-right: $g-columnGutter;
+
+  @for $i from 1 through 12 {
+    &.G-col--#{$i} {
+      width: calc(100% / 12 * #{$i});
+      width: -webkit-calc(100% / 12 * #{$i});
+      width: -moz-calc(100% / 12 * #{$i});
+    }
+  }
+}
+
+.G-column--mobileFull {
+}
+
+.G-column--tabletFull {
+}
+
+.G-column--pull-1 {
+}
+
+.G-column--push-1 {
+}
+
+// DEMO
+
+body {
+  font-family: Helvetica, Arial, sans;
+  font-size: 0.67em;
+  padding: 0;
+  margin: 0;
+}
+
+.Example {
+  .Example-title {
+    font-size: 2.5em;
+    margin: 1.5em 0;
+  }
+
+  .Example-row {
+    margin-bottom: 10px;
+    @include clearfix;
+
+    & > div {
+      background-color: #EEE;
+      text-align: center;
+      font-weight: bold;
+
+      &:first-child {
+        background-color: whiteSmoke;
+      }
+    }
+  }
+
+  .Example-item {
+    background-color: #AAA;
+    padding: 10px 4px;
+  }
+}
