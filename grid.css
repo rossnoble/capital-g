@@ -72,6 +72,12 @@
     width: -webkit-calc(100% / 12 * 12);
     width: -moz-calc(100% / 12 * 12); }
 
+@media only screen and (max-width: 740px) {
+  .G-u-noTablet {
+    display: none; } }
+@media only screen and (max-width: 739px) {
+  .G-u-noMobile {
+    display: none; } }
 body {
   font-family: Helvetica, Arial, sans;
   font-size: 0.67em;
@@ -93,8 +99,6 @@ body {
     background-color: #EEE;
     text-align: center;
     font-weight: bold; }
-    .Example .Example-row > div:first-child {
-      background-color: whiteSmoke; }
 .Example .Example-item {
-  background-color: #AAA;
+  background-color: #CCC;
   padding: 10px 4px; }
