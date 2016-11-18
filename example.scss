@@ -1,0 +1,33 @@
+// DEMO
+
+@import 'lib/capital_g';
+
+body {
+  font-family: Helvetica, Arial, sans;
+  font-size: 0.67em;
+  padding: 0;
+  margin: 0;
+}
+
+.Example {
+  .Example-title {
+    font-size: 2.5em;
+    margin: 1.5em 0;
+  }
+
+  .Example-row {
+    margin-bottom: 10px;
+    @include clearfix;
+
+    & > div {
+      background-color: #EEE;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+
+  .Example-item {
+    background-color: #CCC;
+    padding: 10px 4px;
+  }
+}

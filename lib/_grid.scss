@@ -1,39 +1,31 @@
-// UTILS
-
-@mixin clearfix {
-  zoom: 1;
-
-  &:before, &:after {
-    content: '';
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
-}
-
 * {
   box-sizing: border-box;
 }
 
-// CONFIG
-
-$g-maxWidth: 1120px;
-$g-maxWidth-tablet: 720px;
-$g-columnGutter: 15px;
-$g-break-desktop: $g-maxWidth;
-$g-break-mobile: ($g-maxWidth-tablet + 19px);
-$g-break-tablet: ($g-maxWidth-tablet + 20px);
-
 // GRID
-
 .G-container {
   max-width: $g-maxWidth;
   margin-left: auto;
   margin-right: auto;
   padding-left: $g-columnGutter;
   padding-right: $g-columnGutter;
+}
+
+.G-container--noGutter {
+  margin-left: auto;
+  margin-right: auto;
+
+  .G-col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.G-row {
+  @include clearfix;
+  padding: 0;
+  margin-left: -$g-columnGutter;
+  margin-right: -$g-columnGutter;
 }
 
 .G-row {
