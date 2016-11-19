@@ -16,7 +16,7 @@ $cloudBlue:       #6EC0D4;
 
 // Component sizing
 $font-size-base: 15px;
-$font-family-base: Helvetica, Arial, sans;
+$font-family-base: "Roboto Slab", Arial, sans;
 $font-family-mono: Monaco, monospace;
 $line-height-base: 1.5;
 
@@ -52,6 +52,7 @@ h3 {
 h4 {
   font-size: 15px;
   margin: 15px 0;
+  text-transform: uppercase;
 }
 
 a {
@@ -99,15 +100,18 @@ hr {
 // Components
 
 .Header {
-  padding: 15px 0;
+  padding: 75px 0 15px;
   margin-bottom: 45px;
   background-color: $murkyWater;
   border-bottom: 1px solid darken($murkyWater, 8%);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.20);
+  @include g-when-mobile {
+    padding: 15px 0;
+  }
   
   h1 {
     margin: 0;
-    @include when-mobile {
+    @include g-when-mobile {
       text-align: center;
       margin-bottom: 15px;
     }
@@ -116,15 +120,16 @@ hr {
   .Header-menu {
     text-align: right;
     list-style: none;
-    @include when-mobile {
+    margin-top: 20px;
+    @include g-when-mobile {
       text-align: center;
+      margin-top: 0;
     }
 
     li {
       display: inline;
-      line-height: 36px;
       margin-left: 20px;
-      @include when-mobile {
+      @include g-when-mobile {
         margin: 0 10px;
         line-height: 1;
       }
@@ -148,14 +153,14 @@ hr {
   .Footer-menu {
     text-align: right;
     list-style: none;
-    @include when-mobile {
+    @include g-when-mobile {
       text-align: center;
     }
 
     li {
       display: inline;
       margin-left: 20px;
-      @include when-mobile {
+      @include g-when-mobile {
         margin: 0 10px;
         line-height: 1;
       }
@@ -180,7 +185,7 @@ hr {
     @include clearfix;
 
     & > div {
-      background-color: rgba(255,255,255,0.15);
+      //background-color: rgba(255,255,255,0.15);
       text-align: center;
       font-weight: bold;
     }
@@ -246,9 +251,15 @@ hr {
 
   .Sidebar {
     @include g-col(4);
+    @include g-when-mobile {
+      @include g-col(12);
+    }
   }
 
   .Content {
     @include g-col(8);
+    @include g-when-mobile {
+      @include g-col(12);
+    }
   }
 }

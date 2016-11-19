@@ -11,13 +11,13 @@
   }
 }
 
-@mixin when-mobile {
+@mixin g-when-mobile {
   @media only screen and (max-width: $g-break-mobile) {
     @content;
   }
 }
 
-@mixin when-tablet {
+@mixin g-when-tablet {
   @media only screen
     and (min-width: $g-break-tablet)
     and (max-width: $g-break-desktop - 1px) {
@@ -25,7 +25,7 @@
   }
 }
 
-@mixin when-desktop {
+@mixin g-when-desktop {
   @media only screen and (min-width: $g-break-desktop) {
     @content;
   }

@@ -19,5 +19,8 @@
 }
 
 @mixin g-col($columns) {
-  @extend .G-col--#{$columns};
+  float: left;
+  padding-left: $g-columnGutter;
+  padding-right: $g-columnGutter;
+  @include _g-width($columns);
 }

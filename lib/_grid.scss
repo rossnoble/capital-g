@@ -1,3 +1,11 @@
+@mixin _g-width($i) {
+  width: calc(100% / 12 * #{$i});
+  width: -webkit-calc(100% / 12 * #{$i});
+  width: -moz-calc(100% / 12 * #{$i});
+}
+
+// ** //
+
 * {
   box-sizing: border-box;
 }
@@ -49,26 +57,20 @@
   // Desktop rules
   .G-col--#{$i} {
     @extend .G-col;
-    width: calc(100% / 12 * #{$i});
-    width: -webkit-calc(100% / 12 * #{$i});
-    width: -moz-calc(100% / 12 * #{$i});
+    @include _g-width($i);
   }
 
   // Tablet rules
-  @include when-tablet {
+  @include g-when-tablet {
     .G-col-tablet--#{$i} {
-      width: calc(100% / 12 * #{$i});
-      width: -webkit-calc(100% / 12 * #{$i});
-      width: -moz-calc(100% / 12 * #{$i});
+      @include _g-width($i);
     }
   }
 
   // Mobile rules
-  @include when-mobile {
+  @include g-when-mobile {
     .G-col-mobile--#{$i} {
-      width: calc(100% / 12 * #{$i});
-      width: -webkit-calc(100% / 12 * #{$i});
-      width: -moz-calc(100% / 12 * #{$i});
+      @include _g-width($i);
     }
   }
 }
@@ -92,7 +94,7 @@
     left: -moz-calc(100% / 12 * -#{$i});
   }
 
-  @include when-mobile {
+  @include g-when-mobile {
     .G-pull-mobile--#{$i} {
       left: calc(100% / 12 * -#{$i});
       left: -webkit-calc(100% / 12 * -#{$i});
@@ -100,7 +102,7 @@
     }
   }
 
-  @include when-tablet {
+  @include g-when-tablet {
     .G-pull-tablet--#{$i} {
       left: calc(100% / 12 * -#{$i});
       left: -webkit-calc(100% / 12 * -#{$i});
@@ -110,7 +112,7 @@
 }
 
 // Mobile and tablet overrides
-@include when-mobile {
+@include g-when-mobile {
   .G-hide-mobile {
     display: none;
   }
@@ -124,7 +126,7 @@
   }
 }
 
-@include when-tablet {
+@include g-when-tablet {
   .G-hide-tablet {
     display: none;
   }
@@ -138,7 +140,7 @@
   }
 }
 
-@include when-desktop {
+@include g-when-desktop {
   .G-hide-desktop {
     display: none;
   }
