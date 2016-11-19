@@ -3,45 +3,75 @@
 }
 
 // GRID
-.G-container {
+.G-container,
+.G-c {
   max-width: $g-maxWidth;
   margin-left: auto;
   margin-right: auto;
   padding-left: $g-columnGutter;
   padding-right: $g-columnGutter;
-}
 
-.G-container--noGutter {
-  margin-left: auto;
-  margin-right: auto;
+  &.G-container--fluid,
+  &.G-c--fluid {
+    max-width: none;
+  }
 
-  .G-col {
+  &.G-container--flush,
+  &.G-c--flush {
     padding-left: 0;
     padding-right: 0;
   }
+
+  &.G-container--gutterless,
+  &.G-c--gutterless {
+    .G-row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .G-col {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
 
-.G-row {
+.G-row,
+.G-r {
   @include clearfix;
   padding: 0;
   margin-left: -$g-columnGutter;
   margin-right: -$g-columnGutter;
 }
 
-.G-row {
-  @include clearfix;
-  padding: 0;
-  margin-left: -$g-columnGutter;
-  margin-right: -$g-columnGutter;
-}
-
-.G-col {
+.G-col,
+.G-c {
   float: left;
   padding-left: $g-columnGutter;
   padding-right: $g-columnGutter;
+}
 
-  @for $i from 1 through 12 {
-    &.G-col--#{$i} {
+@for $i from 1 through 12 {
+  // Desktop rules
+  .G-col--#{$i} {
+    @extend .G-col;
+    width: calc(100% / 12 * #{$i});
+    width: -webkit-calc(100% / 12 * #{$i});
+    width: -moz-calc(100% / 12 * #{$i});
+  }
+
+  // Tablet rules
+  @include when-tablet {
+    .G-col-tablet--#{$i} {
+      width: calc(100% / 12 * #{$i});
+      width: -webkit-calc(100% / 12 * #{$i});
+      width: -moz-calc(100% / 12 * #{$i});
+    }
+  }
+
+  // Mobile rules
+  @include when-mobile {
+    .G-col-mobile--#{$i} {
       width: calc(100% / 12 * #{$i});
       width: -webkit-calc(100% / 12 * #{$i});
       width: -moz-calc(100% / 12 * #{$i});
@@ -49,58 +79,73 @@
   }
 }
 
-.G-column--mobileFull {
+// Push and pull
+[class*="G-pull-"],
+[class*="G-push-"] {
+  position: relative;
 }
 
-.G-column--tabletFull {
-}
-
-.G-column--pull-1 {
-}
-
-.G-column--push-1 {
-}
-
-@media only screen and (max-width: $g-break-tablet) {
-  .G-u-noTablet {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: $g-break-mobile) {
-  .G-u-noMobile {
-    display: none;
-  }
-}
-
-// DEMO
-
-body {
-  font-family: Helvetica, Arial, sans;
-  font-size: 0.67em;
-  padding: 0;
-  margin: 0;
-}
-
-.Example {
-  .Example-title {
-    font-size: 2.5em;
-    margin: 1.5em 0;
+@for $i from 1 through 12 {
+  .G-push--#{$i} {
+    left: calc(100% / 12 * #{$i});
+    left: -webkit-calc(100% / 12 * #{$i});
+    left: -moz-calc(100% / 12 * #{$i});
   }
 
-  .Example-row {
-    margin-bottom: 10px;
-    @include clearfix;
+  .G-pull--#{$i} {
+    left: calc(100% / 12 * -#{$i});
+    left: -webkit-calc(100% / 12 * -#{$i});
+    left: -moz-calc(100% / 12 * -#{$i});
+  }
 
-    & > div {
-      background-color: #EEE;
-      text-align: center;
-      font-weight: bold;
+  @include when-mobile {
+    .G-pull-mobile--#{$i} {
+      left: calc(100% / 12 * -#{$i});
+      left: -webkit-calc(100% / 12 * -#{$i});
+      left: -moz-calc(100% / 12 * -#{$i});
     }
   }
 
-  .Example-item {
-    background-color: #CCC;
-    padding: 10px 4px;
+  @include when-tablet {
+    .G-pull-tablet--#{$i} {
+      left: calc(100% / 12 * -#{$i});
+      left: -webkit-calc(100% / 12 * -#{$i});
+      left: -moz-calc(100% / 12 * -#{$i});
+    }
+  }
+}
+
+// Mobile and tablet overrides
+@include when-mobile {
+  .G-hide-mobile {
+    display: none;
+  }
+
+  .G-push-mobile--0 {
+    left: 0;
+  }
+
+  .G-pull-mobile--0 {
+    right: 0;
+  }
+}
+
+@include when-tablet {
+  .G-hide-tablet {
+    display: none;
+  }
+
+  .G-push-tablet--0 {
+    left: 0;
+  }
+
+  .G-push-tablet--0 {
+    right: 0;
+  }
+}
+
+@include when-desktop {
+  .G-hide-desktop {
+    display: none;
   }
 }
