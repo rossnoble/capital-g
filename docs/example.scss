@@ -12,12 +12,17 @@ $maroon:          #A73F52;
 $murkyWater:      #0D4754;
 $retroGreen:      #3FC7A2;
 $blueGrey:        #37809C;
+$cloudBlue:       #6EC0D4;
 
 // Component sizing
 $font-size-base: 15px;
 $font-family-base: Helvetica, Arial, sans;
 $font-family-mono: Monaco, monospace;
 $line-height-base: 1.5;
+
+html {
+  background-color: $murkyWater;
+}
 
 body {
   background-color: $teal;
@@ -75,6 +80,9 @@ code {
   font-size: $font-size-base;
   background-color: $cream;
   color: $brown;
+  overflow: scroll;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.45);
 }
 
 pre {
@@ -91,9 +99,11 @@ hr {
 // Components
 
 .Header {
-  background-color: $murkyWater;
   padding: 15px 0;
   margin-bottom: 45px;
+  background-color: $murkyWater;
+  border-bottom: 1px solid darken($murkyWater, 8%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
   
   h1 {
     margin: 0;
@@ -125,7 +135,7 @@ hr {
 .Footer {
   background-color: $murkyWater;
   padding: 30px 0;
-  color: lighten($teal, 5%);
+  color: $cloudBlue;
 
   a {
     color: $white;
@@ -207,6 +217,12 @@ hr {
       padding: 50px 0;
     }
   }
+}
+
+.or {
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .Layout {

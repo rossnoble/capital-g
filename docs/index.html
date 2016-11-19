@@ -320,6 +320,14 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
 <div class="G-container">
   <h2>Fluid Container</h2>
 
+  <h4>SASS</h4>
+  <pre><code>.Container {
+  @include g($fluid: true);
+}</code></pre>
+
+  <div class="or">OR</div>
+
+  <h4>HTML</h4>
   <pre><code>&lt;div class="G-container g-container--fluid"&gt;
   &lt;!-- content goes here --&gt;
 &lt;/div&gt;</code></pre>
@@ -350,12 +358,21 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
 <div class="G-container">
   <h2>Gutterless Container</h2>
 
-  <pre><code>&lt;div class="G-container g-container--gutterless g-container--flush G-container--fluid"&gt;
+  <h4>SASS</h4>
+  <pre><code>.Container {
+  @include g($gutter: false);
+}</code></pre>
+
+  <div class="or">OR</div>
+
+  <h4>HTML</h4>
+  <pre><code>&lt;div class="G-container g-container--gutterless"&gt;
   &lt;!-- content goes here --&gt;
 &lt;/div&gt;</code></pre>
 </div>
 
 <div class="Example G-container G-container--gutterless">
+  <h4>Example</h4>
   <div class="G-row">
     <div class="G-col--3">
       <img src="images/pct.jpg">
