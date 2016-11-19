@@ -3,49 +3,43 @@
 }
 
 // GRID
-.G-container,
-.G-c {
+.G-container {
   max-width: $g-maxWidth;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $g-columnGutter;
-  padding-right: $g-columnGutter;
+  padding-left: $g-containerGutter;
+  padding-right: $g-containerGutter;
 
-  &.G-container--fluid,
-  &.G-c--fluid {
+  &.G-container--fluid {
     max-width: none;
   }
 
-  &.G-container--flush,
-  &.G-c--flush {
+  &.G-container--flush {
     padding-left: 0;
     padding-right: 0;
   }
 
-  &.G-container--gutterless,
-  &.G-c--gutterless {
+  &.G-container--gutterless {
     .G-row {
       margin-left: 0;
       margin-right: 0;
     }
 
-    .G-col {
+    [class*="G-col--"] {
       padding-left: 0;
       padding-right: 0;
     }
   }
 }
 
-.G-row,
-.G-r {
+.G-row {
   @include clearfix;
   padding: 0;
   margin-left: -$g-columnGutter;
   margin-right: -$g-columnGutter;
 }
 
-.G-col,
-.G-c {
+.G-col {
   float: left;
   padding-left: $g-columnGutter;
   padding-right: $g-columnGutter;

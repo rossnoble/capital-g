@@ -8,39 +8,41 @@
 </head>
 <body>
 
-<h1>Capital G - Grid system</h1>
+<header>
+  <h1>Capital G - Grid System</h1>
+</header>
+
+<div class="G-container">
+  <h2>Sass Config</h2>
+
+  <pre><code>$g-maxWidth: 1120px;
+$g-maxWidth-tablet: 720px;
+$g-containerGutter: 15px;
+$g-columnGutter: 15px;
+$g-break-desktop: $g-maxWidth;
+$g-break-mobile: ($g-maxWidth-tablet + 19px);
+$g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
+</div>
 
 <div class="G-container">
   <h2>Basic Columns</h2>
 
-  <pre>
-    <code>&lt;div class="G-container"&gt;
+  <pre><code>&lt;div class="G-container"&gt;
   &lt;div class="G-row"&gt;
     &lt;div class="G-col--6"&gt;
       &lt;!-- content goes here --&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code>
-  </pre>
+&lt;/div&gt;</code></pre>
 </div>
 
 <div class="Example G-container">
   <div class="G-row">
     <div class="Example-row">
-      <div class="G-col G-col--1">
-        <div class="Example-item">
-          <span class="G-hide-mobile G-hide-tablet">.G-col--1</span>
-        </div>
-      </div>
-      <div class="G-col G-col--11">
-        <div class="Example-item">.G-col--11</div>
-      </div>
-    </div>
-
-    <div class="Example-row">
       <div class="G-col G-col--2">
         <div class="Example-item">.G-col--2</div>
       </div>
+
       <div class="G-col G-col--10">
         <div class="Example-item">.G-col--10</div>
       </div>
@@ -50,6 +52,7 @@
       <div class="G-col G-col--3">
         <div class="Example-item">.G-col--3</div>
       </div>
+
       <div class="G-col G-col--9">
         <div class="Example-item">.G-col--9</div>
       </div>
@@ -84,21 +87,39 @@
         <div class="Example-item">.G-col--6</div>
       </div>
     </div>
+
+    <div class="Example-row">
+      <div class="G-col G-col--7">
+        <div class="Example-item">.G-col--7</div>
+      </div>
+
+      <div class="G-col G-col--5">
+        <div class="Example-item">.G-col--5</div>
+      </div>
+    </div>
+
+    <div class="Example-row">
+      <div class="G-col G-col--8">
+        <div class="Example-item">.G-col--8</div>
+      </div>
+
+      <div class="G-col G-col--4">
+        <div class="Example-item">.G-col--4</div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="G-container">
   <h2>Nested Columns</h2>
 
-  <pre>
-    <code>&lt;div class="G-container"&gt;
+  <pre><code>&lt;div class="G-container"&gt;
   &lt;div class="G-row"&gt;
     &lt;div class="G-col--6"&gt;
       &lt;!-- content goes here --&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code>
-  </pre>
+&lt;/div&gt;</code></pre>
 </div>
 
 <div class="Example G-container">
@@ -106,6 +127,8 @@
     <div class="Example-row">
       <div class="G-col--6">
         <div class="Example-item">
+          <div class="Example-label">.G-col--6</div>
+
           <div class="G-row">
             <div class="G-col--6">
               <div class="Example-item">.G-col--6</div>
@@ -120,6 +143,8 @@
 
       <div class="G-col--6">
         <div class="Example-item">
+          <div class="Example-label">.G-col--6</div>
+
           <div class="G-row">
             <div class="G-col--6">
               <div class="Example-item">.G-col--6</div>
@@ -136,6 +161,8 @@
     <div class="Example-row">
       <div class="G-col--4">
         <div class="Example-item">
+          <div class="Example-label">.G-col--4</div>
+
           <div class="G-row">
             <div class="G-col--6">
               <div class="Example-item">.G-col--6</div>
@@ -150,13 +177,15 @@
 
       <div class="G-col--8">
         <div class="Example-item">
+          <div class="Example-label">.G-col--8</div>
+
           <div class="G-row">
-            <div class="G-col--8">
-              <div class="Example-item">.G-col--8</div>
+            <div class="G-col--6">
+              <div class="Example-item">.G-col--6</div>
             </div>
 
-            <div class="G-col--4">
-              <div class="Example-item">.G-col--4</div>
+            <div class="G-col--6">
+              <div class="Example-item">.G-col--6</div>
             </div>
           </div>
         </div>
@@ -168,45 +197,43 @@
 <div class="G-container">
   <h2>Fluid Container</h2>
 
-  <pre>
-    <code>&lt;div class="G-container g-container--fluid"&gt;
+  <pre><code>&lt;div class="G-container g-container--fluid"&gt;
   &lt;!-- content goes here --&gt;
-&lt;/div&gt;</code>
-  </pre>
+&lt;/div&gt;</code></pre>
 </div>
 
-<div class="Example G-c G-c--fluid">
-  <div class="G-r">
-    <div class="G-col--3">
-      <img src="images/pct.jpg">
-    </div>
+<div class="Example Example--singleRow G-container G-container--fluid">
+  <div class="G-row">
+    <div class="Example-row">
+      <div class="G-col G-col--3">
+        <div class="Example-item">.G-col--3</div>
+      </div>
 
-    <div class="G-col--3">
-      <img src="images/pct.jpg">
-    </div>
+      <div class="G-col G-col--3">
+        <div class="Example-item">.G-col--3</div>
+      </div>
 
-    <div class="G-col--3">
-      <img src="images/pct.jpg">
-    </div>
+      <div class="G-col G-col--3">
+        <div class="Example-item">.G-col--3</div>
+      </div>
 
-    <div class="G-col--3">
-      <img src="images/pct.jpg">
+      <div class="G-col G-col--3">
+        <div class="Example-item">.G-col--3</div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="G-container">
-  <h2>Flush/Fluid/Gutterless Container</h2>
+  <h2>Gutterless Container</h2>
 
-  <pre>
-    <code>&lt;div class="G-container g-container--gutterless g-container--flush G-container--fluid"&gt;
+  <pre><code>&lt;div class="G-container g-container--gutterless g-container--flush G-container--fluid"&gt;
   &lt;!-- content goes here --&gt;
-&lt;/div&gt;</code>
-  </pre>
+&lt;/div&gt;</code></pre>
 </div>
 
-<div class="Example G-c G-c--flush G-c--fluid G-c--gutterless">
-  <div class="G-r">
+<div class="Example G-container G-container--gutterless">
+  <div class="G-row">
     <div class="G-col--3">
       <img src="images/pct.jpg">
     </div>
