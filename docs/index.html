@@ -6,6 +6,7 @@
   <link href="./example.css" media="all" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon32x32.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/default.min.css">
 </head>
 <body>
 
@@ -32,7 +33,7 @@
 
 <div class="G-container">
   <h2>Sass Config</h2>
-  
+
   <p>Every project will require the following variables to be defined:</p>
 
   <pre><code>$g-maxWidth: 1120px;
@@ -142,11 +143,9 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
     </div>
   </div>
 
-  <p>As you can see the first method is cleaner and lends itself well to core layout elements like sidebars and content blocks, but might be pain when prototyping.</p> 
+  <p>As you can see the first method is cleaner and lends itself well to core layout elements like sidebars and content blocks, but might be pain when prototyping.</p>
 
 </div>
-
-<hr>
 
 <div class="G-container">
   <h2>Basic Columns</h2>
@@ -159,6 +158,27 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+
+  <h4>SASS</h4>
+  <pre><code>.Container {
+  @include g();
+
+  // An "row" container div is required around the columns
+  // to offset the gutter around the first and last column
+  .Container-row {
+    @include g-row();
+  }
+
+  .SomeComponent {
+    @include g-col(4);
+    @include g-when-tablet {
+      @include g-col(6);
+    }
+    @include g-when-mobile {
+      @include g-col(12);
+    }
+  }
+}</code></pre>
 </div>
 
 <div class="Example G-container">
@@ -239,14 +259,45 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
 <div class="G-container">
   <h2>Nested Columns</h2>
 
+  <p>There's nothing stopping you from nesting columns inside of other columns as long as you include you wrap the child columns inside a  <code>G-row</code> element.
+
   <h4>HTML</h4>
   <pre><code>&lt;div class="G-container"&gt;
   &lt;div class="G-row"&gt;
     &lt;div class="G-col--6"&gt;
-      &lt;!-- content goes here --&gt;
+      &lt;div class="G-row"&gt;
+        &lt;div class="G-col--6"&gt;
+          &lt;!-- content goes here --&gt;
+        &lt;/div&gt;
+
+        &lt;div class="G-col--6"&gt;
+          &lt;!-- content goes here --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+
+  <h4>SASS</h4>
+  <pre><code>.Outer {
+  @include g();
+
+  .Outer-row {
+    @include g-row();
+  }
+
+  .Inner {
+    @include g-col(6);
+
+    .Inner-row {
+      @include g-row();
+    }
+
+    .Inner-component {
+      @include g-col(6);
+    }
+  }
+}</code></pre>
 </div>
 
 <div class="Example G-container">
@@ -337,28 +388,13 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
   <pre><code>&lt;div class="G-container g-container--fluid"&gt;
   &lt;!-- content goes here --&gt;
 &lt;/div&gt;</code></pre>
+  <h4>Example</h4>
 </div>
 
 <div class="Example Example--singleRow G-container G-container--fluid">
-  <div class="G-row">
-    <div class="Example-row">
-      <div class="G-col G-col--3">
-        <div class="Example-item">.G-col--3</div>
-      </div>
+  <img src="images/lake.jpg">
+</div>
 
-      <div class="G-col G-col--3">
-        <div class="Example-item">.G-col--3</div>
-      </div>
-
-      <div class="G-col G-col--3">
-        <div class="Example-item">.G-col--3</div>
-      </div>
-
-      <div class="G-col G-col--3">
-        <div class="Example-item">.G-col--3</div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="G-container">
@@ -380,20 +416,28 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
 <div class="Example G-container G-container--gutterless">
   <h4>Example</h4>
   <div class="G-row">
-    <div class="G-col--3">
-      <img src="images/pct.jpg">
+    <div class="G-col--3 G-col-mobile--6">
+      <img src="images/tractor.jpg">
     </div>
 
-    <div class="G-col--3">
-      <img src="images/pct.jpg">
+    <div class="G-col--3 G-col-mobile--6">
+      <img src="images/windmills.jpg">
     </div>
 
-    <div class="G-col--3">
-      <img src="images/pct.jpg">
+    <div class="G-col--3 G-col-mobile--6">
+      <img src="images/river.jpg">
     </div>
 
-    <div class="G-col--3">
-      <img src="images/pct.jpg">
+    <div class="G-col--3 G-col-mobile--6">
+      <img src="images/butterfly.jpg">
+    </div>
+
+    <div class="G-col--6">
+      <img src="images/hut.jpg">
+    </div>
+
+    <div class="G-col--6">
+      <img src="images/trees.jpg">
     </div>
   </div>
 </div>
@@ -419,5 +463,7 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
   </div>
 </header>
 
+<script src="highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

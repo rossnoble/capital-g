@@ -493,7 +493,7 @@ body {
   margin: 0; }
 
 h1 {
-  font-size: 32px;
+  font-size: 36px;
   margin: 15px 0; }
 
 h2 {
@@ -524,9 +524,9 @@ li {
   padding: 0; }
 
 code {
-  display: block;
-  margin: 0;
-  padding: 10px;
+  display: inline;
+  margin: 0 2px;
+  padding: 1px 5px;
   font-size: 15px;
   background-color: #fbf8e2;
   color: #946206;
@@ -537,6 +537,10 @@ code {
 pre {
   margin: 0 0 30px;
   padding: 0; }
+  pre code {
+    display: block;
+    margin: 0;
+    padding: 10px; }
 
 hr {
   margin: 45px 0;
