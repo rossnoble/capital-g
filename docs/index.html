@@ -10,9 +10,21 @@
 
 <h1>Capital G - Grid system</h1>
 
-<div class="Example G-container">
+<div class="G-container">
   <h2>Basic Columns</h2>
 
+  <pre>
+    <code>&lt;div class="G-container"&gt;
+  &lt;div class="G-row"&gt;
+    &lt;div class="G-col--6"&gt;
+      &lt;!-- content goes here --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+  </pre>
+</div>
+
+<div class="Example G-container">
   <div class="G-row">
     <div class="Example-row">
       <div class="G-col G-col--1">
@@ -72,22 +84,24 @@
         <div class="Example-item">.G-col--6</div>
       </div>
     </div>
-
-    <div class="Example-row">
-      <div class="G-col--6">
-        <div class="Example-item">.G-col--6</div>
-      </div>
-
-      <div class="G-col--6">
-        <div class="Example-item">.G-col--6</div>
-      </div>
-    </div>
   </div>
 </div>
 
-<div class="Example G-container">
+<div class="G-container">
   <h2>Nested Columns</h2>
 
+  <pre>
+    <code>&lt;div class="G-container"&gt;
+  &lt;div class="G-row"&gt;
+    &lt;div class="G-col--6"&gt;
+      &lt;!-- content goes here --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+  </pre>
+</div>
+
+<div class="Example G-container">
   <div class="G-row">
     <div class="Example-row">
       <div class="G-col--6">
@@ -152,10 +166,40 @@
 </div>
 
 <div class="G-container">
+  <h2>Fluid Container</h2>
+
+  <pre>
+    <code>&lt;div class="G-container g-container--fluid"&gt;
+  &lt;!-- content goes here --&gt;
+&lt;/div&gt;</code>
+  </pre>
+</div>
+
+<div class="Example G-c G-c--fluid">
+  <div class="G-r">
+    <div class="G-col--3">
+      <img src="images/pct.jpg">
+    </div>
+
+    <div class="G-col--3">
+      <img src="images/pct.jpg">
+    </div>
+
+    <div class="G-col--3">
+      <img src="images/pct.jpg">
+    </div>
+
+    <div class="G-col--3">
+      <img src="images/pct.jpg">
+    </div>
+  </div>
+</div>
+
+<div class="G-container">
   <h2>Flush/Fluid/Gutterless Container</h2>
 
   <pre>
-    <code>&lt;div class="G-container g-container--gutterless g-container--fluid G-container--fluid"&gt;
+    <code>&lt;div class="G-container g-container--gutterless g-container--flush G-container--fluid"&gt;
   &lt;!-- content goes here --&gt;
 &lt;/div&gt;</code>
   </pre>
@@ -163,27 +207,19 @@
 
 <div class="Example G-c G-c--flush G-c--fluid G-c--gutterless">
   <div class="G-r">
-    <div class="G-col G-col--4">
+    <div class="G-col--3">
       <img src="images/pct.jpg">
     </div>
 
-    <div class="G-col G-col--4">
+    <div class="G-col--3">
       <img src="images/pct.jpg">
     </div>
 
-    <div class="G-col G-col--4">
+    <div class="G-col--3">
       <img src="images/pct.jpg">
     </div>
 
-    <div class="G-col G-col--4">
-      <img src="images/pct.jpg">
-    </div>
-
-    <div class="G-col G-col--4">
-      <img src="images/pct.jpg">
-    </div>
-
-    <div class="G-col G-col--4">
+    <div class="G-col--3">
       <img src="images/pct.jpg">
     </div>
   </div>

@@ -1,6 +1,6 @@
 // DEMO
 
-@import 'lib/capital_g';
+@import '../lib/capital_g';
 
 $grey:            #EEEEEE;
 $navy:            #304365;
@@ -33,9 +33,15 @@ code {
   font-size: $font-size-base;
   padding: 10px;
   color: $navy;
+  margin-bottom: 15px;
+}
+
+pre {
+  margin: 0;
 }
 
 .Example {
+  margin-bottom: 30px;
 
   .Example-row {
     white-space: nowrap;
