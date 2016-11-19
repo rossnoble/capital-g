@@ -1,31 +1,31 @@
 @import '../lib/capital_g';
 
+// Colors
 $white:           #FFFFFF;
 $grey:            #EEEEEE;
 $navy:            #304365;
 $teal:            #247284;
-$murkyWater:      #0D4754;
-$retroGreen:      #3FC7A2;
-
-$brown:           #422D06;
+$brown:           #946206;
 $cream:           #FBF8E2;
-
 $salmon:          #E87979;
 $maroon:          #A73F52;
+$murkyWater:      #0D4754;
+$retroGreen:      #3FC7A2;
+$blueGrey:        #37809C;
 
-$blueGrey:        #90B1C1;
-$blueGrey--light: #DBE2E6;
-
+// Component sizing
 $font-size-base: 15px;
 $font-family-base: Helvetica, Arial, sans;
 $font-family-mono: Monaco, monospace;
+$line-height-base: 1.5;
 
 body {
   background-color: $teal;
   font-family: $font-family-base;
   font-size: $font-size-base;
+  line-height: $line-height-base;
   color: $white;
-  padding: 0 0 30px;
+  padding: 0;
   margin: 0;
 }
 
@@ -39,20 +39,38 @@ h2 {
   margin: 15px 0;
 }
 
-header {
-  background-color: $murkyWater;
-  padding: 15px 0;
-  margin-bottom: 45px;
+h3 {
+  font-size: 18px;
+  margin: 15px 0;
+}
 
-  h1 {
-    margin: 0;
-    text-align: center;
+h4 {
+  font-size: 15px;
+  margin: 15px 0;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
 }
 
 code {
   display: block;
-  margin-bottom: 15px;
+  margin: 0;
   padding: 10px;
   font-size: $font-size-base;
   background-color: $cream;
@@ -64,9 +82,87 @@ pre {
   padding: 0;
 }
 
+hr {
+  margin: 45px 0;
+  border: 0;
+  border-top: 3px solid rgba(255,255,255,0.3);
+}
+
+// Components
+
+.Header {
+  background-color: $murkyWater;
+  padding: 15px 0;
+  margin-bottom: 45px;
+  
+  h1 {
+    margin: 0;
+    @include when-mobile {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  }
+
+  .Header-menu {
+    text-align: right;
+    list-style: none;
+    @include when-mobile {
+      text-align: center;
+    }
+
+    li {
+      display: inline;
+      line-height: 36px;
+      margin-left: 20px;
+      @include when-mobile {
+        margin: 0 10px;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.Footer {
+  background-color: $murkyWater;
+  padding: 30px 0;
+  color: lighten($teal, 5%);
+
+  a {
+    color: $white;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .Footer-menu {
+    text-align: right;
+    list-style: none;
+    @include when-mobile {
+      text-align: center;
+    }
+
+    li {
+      display: inline;
+      margin-left: 20px;
+      @include when-mobile {
+        margin: 0 10px;
+        line-height: 1;
+      }
+    }
+  }
+}
+
 .Example {
   @include clearfix;
   margin-bottom: 60px;
+
+  &.Example--wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: $blueGrey;
+    box-shadow: 0 0px 3px rgba(32,79,113,0.8);
+  }
 
   .Example-row {
     white-space: nowrap;
@@ -110,5 +206,33 @@ pre {
     .Example-item {
       padding: 50px 0;
     }
+  }
+}
+
+.Layout {
+  @include g();
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  h3 {
+    margin: 0 0 15px;
+  }
+
+  pre {
+    margin: 0;
+  }
+
+  .Layout-inner {
+    @include g-row();
+  }
+
+  .Sidebar {
+    @include g-col(4);
+  }
+
+  .Content {
+    @include g-col(8);
   }
 }

@@ -1,0 +1,32 @@
+@mixin clearfix {
+  zoom: 1;
+
+  &:before, &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin when-mobile {
+  @media only screen and (max-width: $g-break-mobile) {
+    @content;
+  }
+}
+
+@mixin when-tablet {
+  @media only screen
+    and (min-width: $g-break-tablet)
+    and (max-width: $g-break-desktop - 1px) {
+      @content;
+  }
+}
+
+@mixin when-desktop {
+  @media only screen and (min-width: $g-break-desktop) {
+    @content;
+  }
+}

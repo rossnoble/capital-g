@@ -8,12 +8,31 @@
 </head>
 <body>
 
-<header>
-  <h1>Capital G - Grid System</h1>
+<header class="Header">
+  <div class="G-container">
+    <div class="G-row">
+      <div class="G-col--6 G-col-mobile--12">
+        <h1>Capital G - Grid System</h1>
+      </div>
+
+      <div class="G-col--6 G-col-mobile--12">
+        <ul class="Header-menu">
+          <li>
+            <a href="https://github.com/rossnoble/capital-g">View on Github</a>
+          </li>
+          <li>
+            <a href="https://github.com/rossnoble/capital-g/archive/master.zip">Download</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </header>
 
 <div class="G-container">
   <h2>Sass Config</h2>
+  
+  <p>Every project will require the following variables to be defined:</p>
 
   <pre><code>$g-maxWidth: 1120px;
 $g-maxWidth-tablet: 720px;
@@ -22,7 +41,111 @@ $g-columnGutter: 15px;
 $g-break-desktop: $g-maxWidth;
 $g-break-mobile: ($g-maxWidth-tablet + 19px);
 $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
+
+  <h2>Two options</h2>
+  <p>There are two ways you can implement a grid in your layout:</p>
+  <ol>
+    <li>with HTML classes</li>
+    <li>with SASS mixins</li>
+  </ol>
+  <p>Neither is more correct that the other. It all depends on your use case. The CSS route is perhaps cleaner, but may be more work if you have to name addtional components to style. Consider the following layout:<p>
 </div>
+
+<div class="Example Example--wrapper">
+  <div class="Layout">
+    <div class="Layout-inner">
+      <div class="Sidebar">
+        <h3>Sidebar</h3>
+        <p>Lorem ipsum dolor sit amet, sit quidam ponderum ea, deleniti lucilius antiopam id vim. No quem adversarium contentiones vis. Ad nam reque cetero consequuntur, velit inani invenire an per. Sea habeo corpora no, ius everti deserunt repudiandae te. Sea mazim partem atomorum cu, ex vel corrumpit scripserit delicatissimi. Pro fugit animal salutandi ei.</p>
+      </div>
+
+      <div class="Content">
+        <h3>Content</h3>
+        <p>Facer repudiandae sed ad, veniam salutandi vix ei. Labores vocibus denique ex has. An mei viderer eripuit intellegat, pri ea utroque dolorem facilis, te liber option meliore mel. Facilis lobortis tractatos cum te, est no simul vidisse eripuit, ne vel vero possim. Eligendi nominati eos ad, te prima verear corrumpit has.</p>
+        <p>Modo possit per et, nam movet accumsan deseruisse et. Tation albucius te usu, cum idque oratio eu, paulo affert antiopam id per. Tamquam maiorum deterruisset at vel, te qui atqui minimum. Sale justo evertitur vix et, mea laudem volumus placerat id. Dico munere scriptorem eos ad.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="G-container">
+  <p>We can implement this in two different ways:</p>
+
+  <h3>1) SASS Mixins (Susy style)</h3>
+
+  <div class="G-row">
+    <div class="G-col--6">
+      <h4>HTML</h4>
+      <pre><code>&lt;div class="Layout"&gt;
+  &lt;div class="Layout-inner"&gt;
+    &lt;div class="Sidebar"&gt;
+      &lt;!-- content goes here --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="Content"&gt;
+      &lt;!-- content goes here --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="G-col--6">
+      <h4>SASS/CSS</h4>
+      <pre><code>.Layout {
+  @include g();
+
+  .Layout-inner {
+    @include g-row();
+  }
+
+  .Sidebar {
+    @include g-col(4);
+    @include g-when-mobile {
+      g-col(12);
+    }
+  }
+
+  .Content {
+    @include g-col(8);
+    @include g-when-mobile {
+      g-col(12);
+    }
+  }
+}</code></pre>
+    </div>
+  </div>
+
+  <h3>2) HTML classes (Bootstrap style)</h3>
+
+  <div class="G-row">
+    <div class="G-col--6">
+      <h4>HTML</h4>
+      <pre><code>&lt;div class="Layout G-container"&gt;
+  &lt;div class="G-row"&gt;
+    &lt;div class="G-col-4 G-col-mobile--12"&gt;
+      &lt;!-- content goes here --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="G-col-8 G-col-mobile--12"&gt;
+      &lt;!-- content goes here --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="G-col--6">
+      <h4>SASS/CSS</h4>
+      <pre><code>.Layout {
+  // Other styles go here
+}</code></pre>
+    </div>
+  </div>
+
+  <p>As you can see the first method is cleaner and lends itself well to core layout elements like sidebars and content blocks, but might be pain when prototyping.</p> 
+
+</div>
+
+<hr>
 
 <div class="G-container">
   <h2>Basic Columns</h2>
@@ -251,6 +374,27 @@ $g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
     </div>
   </div>
 </div>
+
+<header class="Footer">
+  <div class="G-container">
+    <div class="G-row">
+      <div class="G-col--6 G-col-mobile--12">
+        <p>Built by <a href="http://www.rossnoble.net" target="_blank">Ross Noble</a> in Vancouver, Canada.</p>
+      </div>
+
+      <div class="G-col--6 G-col-mobile--12">
+        <ul class="Footer-menu">
+          <li>
+            <a href="https://github.com/rossnoble/capital-g">View on Github</a>
+          </li>
+          <li>
+            <a href="https://github.com/rossnoble/capital-g/archive/master.zip">Download</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
 
 </body>
 </html>

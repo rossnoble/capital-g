@@ -1,32 +1,23 @@
-@mixin clearfix {
-  zoom: 1;
+@mixin g($fluid: false, $flush: false, $gutter: true) {
+  @extend .G-container;
 
-  &:before, &:after {
-    content: '';
-    display: table;
+  @if ($fluid) {
+    @extend .G-container.G-container--fluid;
   }
 
-  &:after {
-    clear: both;
+  @if ($flush) {
+    @extend .G-container.G-container--flush;
   }
-}
 
-@mixin when-mobile {
-  @media only screen and (max-width: $g-break-mobile) {
-    @content;
+  @if ($gutter == false) {
+    @extend .G-container.G-container--gutterless;
   }
 }
 
-@mixin when-tablet {
-  @media only screen
-    and (min-width: $g-break-tablet)
-    and (max-width: $g-break-desktop - 1px) {
-      @content;
-  }
+@mixin g-row() {
+  @extend .G-row;
 }
 
-@mixin when-desktop {
-  @media only screen and (min-width: $g-break-desktop) {
-    @content;
-  }
+@mixin g-col($columns) {
+  @extend .G-col--#{$columns};
 }
