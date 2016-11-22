@@ -4,12 +4,14 @@
 
 Every project will require the following variable map to be defined:</p>
 
-<pre><code>$g-config: (
+```sass
+$g-config: (
   maxWidth: 1020px,
   tabletWidth: 720px,
   columnPadding: 15px,
   gutter: 20px
-);</code></pre>
+);
+```
 
 ## Flexibility
 
@@ -24,34 +26,39 @@ Neither is more correct that the other. It all depends on your use case. The CSS
 
 Column widths and break rules are defined as classes in the HTML.
 
-<pre><code>&lt;div class="Layout G-container"&gt;
-  &lt;div class="G-row"&gt;
-    &lt;div class="G-col-4 G-col-mobile--12"&gt;
-      &lt;!-- content goes here --&gt;
-    &lt;/div&gt;
-    &lt;div class="G-col-8 G-col-mobile--12"&gt;
-      &lt;!-- content goes here --&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+```html
+<div class="Layout G-container">
+  <div class="G-row">
+    <div class="G-col-4 G-col-mobile--12">
+      <!-- content goes here -->
+    </div>
+    <div class="G-col-8 G-col-mobile--12">
+      <!-- content goes here -->
+    </div>
+  </div>
+</div>
+```
 
 ## CSS Method
 
 Elements are assigned classes in the HTML but the column widths and break rules are defined in the SASS/CSS using mixins.
 
-<pre><code>&lt;div class="Layout"&gt;
-  &lt;div class="Layout-inner"&gt;
-    &lt;div class="Sidebar"&gt;
-      &lt;!-- content goes here --&gt;
-    &lt;/div&gt;
+```html
+<div class="Layout">
+  <div class="Layout-inner">
+    <div class="Sidebar">
+      <!-- content goes here -->
+    </div>
 
-    &lt;div class="Content"&gt;
-      &lt;!-- content goes here --&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+    <div class="Content">
+      <!-- content goes here -->
+    </div>
+  </div>
+</div>
+```
 
-<pre><code>.Layout {
+```sass
+.Layout {
   @include g();
 
   .Layout-inner {
@@ -71,7 +78,8 @@ Elements are assigned classes in the HTML but the column widths and break rules 
       @include g-col(12);
     }
   }
-}</code></pre>
+}
+```
 
 ## Reference
 
