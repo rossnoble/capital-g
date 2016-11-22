@@ -1,0 +1,16 @@
+{
+  "name": "capital-g",
+  "version": "0.1.0",
+  "homepage": "http://rossnoble.github.io/capital-g/",
+  "authors": [
+    "Ross Noble <rosshnoble@gmail.com>"
+  ],
+  "description": "A simple, dependency-free, grid framework for SASS",
+  "main": "lib/capital_g.scss",
+  "keywords": [
+    "sass",
+    "css",
+    "grid"
+  ],
+  "license": "MIT"
+}
