@@ -86,29 +86,29 @@ Elements are assigned classes in the HTML but the column widths and break rules 
 ### SASS Mixins
 
 #### Container
-```
+```sass
 @include g($fluid: false, $flush: false, $gutter: true);
 ```
 
 #### Row
-```
+```sass
 @include g-row();
 ```
 
 #### Column
-```
+```sass
 @include g-column($columns);
 ```
 
 #### Mobile media query helper
-```
+```sass
 @include g-when-mobile() {
   // Styles here
 }
 ```
 
 #### Desktop media query helper
-```
+```sass
 @include g-when-tablet() {
   // Styles here
 }
@@ -116,7 +116,7 @@ Elements are assigned classes in the HTML but the column widths and break rules 
 
 
 #### Desktop media query helper
-```
+```sass
 @include g-when-desktop() {
   // Styles here
 }
