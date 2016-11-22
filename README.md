@@ -2,15 +2,14 @@
 
 ## Sass Config</h2>
 
-Every project will require the following variables to be defined:</p>
+Every project will require the following variable map to be defined:</p>
 
-<pre><code>$g-maxWidth: 1120px;
-$g-maxWidth-tablet: 720px;
-$g-containerGutter: 15px;
-$g-columnGutter: 15px;
-$g-break-desktop: $g-maxWidth;
-$g-break-mobile: ($g-maxWidth-tablet + 19px);
-$g-break-tablet: ($g-maxWidth-tablet + 20px);</code></pre>
+<pre><code>$g-config: (
+  maxWidth: 1020px,
+  tabletWidth: 720px,
+  columnPadding: 15px,
+  gutter: 20px
+);</code></pre>
 
 ## Flexibility
 

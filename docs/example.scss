@@ -6,7 +6,7 @@ $grey:            #EEEEEE;
 $navy:            #304365;
 $teal:            #247284;
 $brown:           #946206;
-$cream:           #FBF8E2;
+$cream:           #FFFEF3;
 $salmon:          #E87979;
 $maroon:          #A73F52;
 $murkyWater:      #0D4754;
@@ -114,7 +114,7 @@ hr {
   @include g-when-mobile {
     padding: 15px 0;
   }
-  
+
   h1 {
     margin: 0;
     @include g-when-mobile {
@@ -267,4 +267,9 @@ hr {
       @include g-col(12);
     }
   }
+}
+
+// Highlight.js applied styles
+.hljs {
+  background: $cream !important;
 }

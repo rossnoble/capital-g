@@ -1,7 +1,16 @@
-$g-maxWidth: 880px;
-$g-maxWidth-tablet: 720px;
-$g-containerGutter: 15px;
-$g-columnGutter: 15px;
-$g-break-desktop: $g-maxWidth;
-$g-break-mobile: ($g-maxWidth-tablet + 19px);
-$g-break-tablet: ($g-maxWidth-tablet + 20px);
+// Config to modify
+$g-config: (
+  maxWidth: 880px,
+  tabletWidth: 720px,
+  columnPadding: 15px,
+  gutter: 20px
+);
+
+// Generated global variables
+$g-maxWidth:        map-get($g-config, maxWidth);
+$g-columnPadding:   map-get($g-config, columnPadding);
+$g-containerGutter: map-get($g-config, gutter);
+
+$g-break-desktop:   map-get($g-config, maxWidth);
+$g-break-tablet:    map-get($g-config, tabletWidth);
+$g-break-mobile:    $g-break-tablet - 1px;

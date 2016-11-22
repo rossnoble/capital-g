@@ -1,26 +1,95 @@
+// Private
+@mixin _g-width($i) {
+  width: calc(100% / 12 * #{$i});
+  width: -webkit-calc(100% / 12 * #{$i});
+  width: -moz-calc(100% / 12 * #{$i});
+}
+
+@mixin _g-left($i) {
+  left: calc(100% / 12 * #{$i});
+  left: -webkit-calc(100% / 12 * #{$i});
+  left: -moz-calc(100% / 12 * #{$i});
+}
+
+// Utils
+@mixin clearfix {
+  zoom: 1;
+
+  &:before, &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// Public
 @mixin g($fluid: false, $flush: false, $gutter: true) {
-  @extend .G-container;
+  max-width: $g-maxWidth;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $g-containerGutter;
+  padding-right: $g-containerGutter;
 
   @if ($fluid) {
-    @extend .G-container.G-container--fluid;
+    max-width: none;
   }
 
   @if ($flush) {
-    @extend .G-container.G-container--flush;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   @if ($gutter == false) {
-    @extend .G-container.G-container--gutterless;
+    .G-row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    [class*="G-col--"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 
 @mixin g-row() {
-  @extend .G-row;
+  @include clearfix;
+  padding: 0;
+  margin-left: -$g-columnPadding;
+  margin-right: -$g-columnPadding;
 }
 
 @mixin g-col($columns) {
   float: left;
-  padding-left: $g-columnGutter;
-  padding-right: $g-columnGutter;
+  padding-left: $g-columnPadding;
+  padding-right: $g-columnPadding;
   @include _g-width($columns);
+}
+@mixin g-when-mobile {
+  @media only screen and (max-width: $g-break-mobile) {
+    @content;
+  }
+}
+
+@mixin g-when-tablet {
+  @media only screen
+    and (min-width: $g-break-tablet)
+    and (max-width: $g-break-desktop - 1px) {
+      @content;
+  }
+}
+
+@mixin g-when-desktop {
+  @media only screen and (min-width: $g-break-desktop) {
+    @content;
+  }
+}
+
+@mixin g-when-tablet-or-less {
+  @media only screen and (max-width: $g-break-desktop - 1px) {
+    @content;
+  }
 }

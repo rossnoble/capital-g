@@ -1,9 +1,3 @@
-@mixin _g-width($i) {
-  width: calc(100% / 12 * #{$i});
-  width: -webkit-calc(100% / 12 * #{$i});
-  width: -moz-calc(100% / 12 * #{$i});
-}
-
 // ** //
 
 * {
@@ -12,45 +6,29 @@
 
 // GRID
 .G-container {
-  max-width: $g-maxWidth;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: $g-containerGutter;
-  padding-right: $g-containerGutter;
+  @include g();
 
   &.G-container--fluid {
-    max-width: none;
+    @include g($fluid: true);
   }
 
   &.G-container--flush {
-    padding-left: 0;
-    padding-right: 0;
+    @include g($flush: true);
   }
 
   &.G-container--gutterless {
-    .G-row {
-      margin-left: 0;
-      margin-right: 0;
-    }
-
-    [class*="G-col--"] {
-      padding-left: 0;
-      padding-right: 0;
-    }
+    @include g($gutter: false);
   }
 }
 
 .G-row {
-  @include clearfix;
-  padding: 0;
-  margin-left: -$g-columnGutter;
-  margin-right: -$g-columnGutter;
+  @include g-row();
 }
 
 .G-col {
   float: left;
-  padding-left: $g-columnGutter;
-  padding-right: $g-columnGutter;
+  padding-left: $g-columnPadding;
+  padding-right: $g-columnPadding;
 }
 
 @for $i from 1 through 12 {
@@ -81,32 +59,31 @@
   position: relative;
 }
 
-@for $i from 1 through 12 {
+@for $i from 0 through 12 {
   .G-push--#{$i} {
-    left: calc(100% / 12 * #{$i});
-    left: -webkit-calc(100% / 12 * #{$i});
-    left: -moz-calc(100% / 12 * #{$i});
+    @include _g-left($i);
   }
 
   .G-pull--#{$i} {
-    left: calc(100% / 12 * -#{$i});
-    left: -webkit-calc(100% / 12 * -#{$i});
-    left: -moz-calc(100% / 12 * -#{$i});
+    @include _g-left(-$i);
   }
 
   @include g-when-mobile {
-    .G-pull-mobile--#{$i} {
-      left: calc(100% / 12 * -#{$i});
-      left: -webkit-calc(100% / 12 * -#{$i});
-      left: -moz-calc(100% / 12 * -#{$i});
+    .G-push-mobile--#{$i} {
+      @include _g-left($i);
     }
-  }
+
+    .G-pull-mobile--#{$i} {
+      @include _g-left(-$i);
+    } }
 
   @include g-when-tablet {
+    .G-push-tablet--#{$i} {
+      @include _g-left($i);
+    }
+
     .G-pull-tablet--#{$i} {
-      left: calc(100% / 12 * -#{$i});
-      left: -webkit-calc(100% / 12 * -#{$i});
-      left: -moz-calc(100% / 12 * -#{$i});
+      @include _g-left(-$i);
     }
   }
 }
@@ -116,27 +93,11 @@
   .G-hide-mobile {
     display: none;
   }
-
-  .G-push-mobile--0 {
-    left: 0;
-  }
-
-  .G-pull-mobile--0 {
-    right: 0;
-  }
 }
 
 @include g-when-tablet {
   .G-hide-tablet {
     display: none;
-  }
-
-  .G-push-tablet--0 {
-    left: 0;
-  }
-
-  .G-push-tablet--0 {
-    right: 0;
   }
 }
 
